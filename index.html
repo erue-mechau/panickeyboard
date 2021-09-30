@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            background-image: linear-gradient(
+                -45deg,
+                #efefef 25%,
+                #dfdfdf 25%,
+                #dfdfdf 50%,
+                #efefef 50%,
+                #efefef 75%,
+                #dfdfdf 75%,
+                #dfdfdf     
+            );
+            background-size: 11px 11px;
+        }
+        #content {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #result {
+            height: 400px;
+            width: 600px;
+            margin: 10px;
+            border: solid 1px #ddd;
+            overflow: auto;
+        }
+        #keys {
+            height: 200px;
+            width: 400px;
+            margin: 10px;
+            border: solid 1px #aaa;
+            background-color: #ddd;
+            white-space: normal;
+            overflow: auto;
+            display: none;
+        }
+        #keyboard {
+            font-size: 0;
+            margin-left: 20px;
+            margin-right: 20px;
+            /* background: linear-gradient(45deg, red, orange, yellow, green, aqua, blue, purple); */
+        }
+        .key {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            font-size: 1.5rem;
+            height: auto;
+            width: 45px;
+        }
+        .original {
+            font-size: 0.75rem;
+            color: #aaa;
+        }
+        #row2 {
+            margin-left: 10px;
+        }
+        #row3 {
+            margin-left: 15px;
+        }
+        #row4 {
+            margin-left: 25px;
+        }
+        #comment {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h3>例のキーボードでだけ正しく入力できるメモ</h3>
+        <p class="pre">
+            ※英数字のみ対応（日本語入力はぐちゃぐちゃになります）<br>
+            ※Shiftなんて無かった<br>
+            ※キーボード配列は小さい文字がqwertyキーボードのキー配列になります<br>
+        </p>
+        <div id="result">🌈</div>
+        <h5>例のキーボード配列</h5>
+        <div id="keyboard">
+            <!-- 1段 -->
+            <div id="row1">
+                <div id="key49" class="key">1<span class="original">1</span></div>
+                <div id="key50" class="key">2<span class="original">2</span></div>
+                <div id="key51" class="key">3<span class="original">3</span></div>
+                <div id="key52" class="key">4<span class="original">4</span></div>
+                <div id="key53" class="key">5<span class="original">5</span></div>
+                <div id="key54" class="key">6<span class="original">6</span></div>
+                <div id="key55" class="key">7<span class="original">7</span></div>
+                <div id="key56" class="key">8<span class="original">8</span></div>
+                <div id="key57" class="key">9<span class="original">9</span></div>
+                <div id="key48" class="key">0<span class="original">0</span></div>
+                <div id="key173" class="key">\<span class="original">-</span></div>
+                <div id="key160" class="key">^<span class="original">^</span></div>
+                <div id="key220" class="key">_<span class="original">\</span></div>
+            </div>
+            <!-- 2段 -->
+            <div id="row2">
+                <div id="key81" class="key">Q<span class="original">Q</span></div>
+                <div id="key87" class="key">W<span class="original">W</span></div>
+                <div id="key69" class="key">E<span class="original">E</span></div>
+                <div id="key82" class="key">R<span class="original">R</span></div>
+                <div id="key84" class="key">U<span class="original">T</span></div>
+                <div id="key89" class="key">P<span class="original">Y</span></div>
+                <div id="key85" class="key">T<span class="original">U</span></div>
+                <div id="key73" class="key">Y<span class="original">I</span></div>
+                <div id="key79" class="key">I<span class="original">O</span></div>
+                <div id="key80" class="key">;<span class="original">P</span></div>
+                <div id="key64" class="key">,<span class="original">@</span></div>
+                <div id="key219" class="key">-<span class="original">[</span></div>
+            </div>
+            <!-- 3段目 -->
+            <div id="row3">
+                <div id="key65" class="key">S<span class="original">A</span></div>
+                <div id="key83" class="key">A<span class="original">S</span></div>
+                <div id="key68" class="key">D<span class="original">D</span></div>
+                <div id="key70" class="key">F<span class="original">F</span></div>
+                <div id="key71" class="key">G<span class="original">G</span></div>
+                <div id="key72" class="key">H<span class="original">H</span></div>
+                <div id="key74" class="key">J<span class="original">J</span></div>
+                <div id="key75" class="key">K<span class="original">K</span></div>
+                <div id="key76" class="key">L<span class="original">L</span></div>
+                <div id="key59" class="key">@<span class="original">;</span></div>
+                <div id="key58" class="key">[<span class="original">:</span></div>
+                <div id="key221" class="key">]<span class="original">]</span></div>
+            </div>
+            <!-- 4段目 -->
+            <div id="row4">
+                <div id="key90" class="key">X<span class="original">Z</span></div>
+                <div id="key88" class="key">C<span class="original">X</span></div>
+                <div id="key67" class="key">B<span class="original">C</span></div>
+                <div id="key86" class="key">V<span class="original">V</span></div>
+                <div id="key66" class="key">Z<span class="original">B</span></div>
+                <div id="key78" class="key">O<span class="original">N</span></div>
+                <div id="key77" class="key">M<span class="original">M</span></div>
+                <div id="key188" class="key">N<span class="original">,</span></div>
+                <div id="key190" class="key">:<span class="original">.</span></div>
+                <div id="key191" class="key">/<span class="original">/</span></div>
+                <div id="key220" class="key">_<span class="original">></span></div>
+            </div>
+        </div>
+        <div id="keys"></div>
+        <div id="comment">
+            腹抱えて笑ったから作った。後悔はしてない。なにこれってなった方はタメナンデスキーボードでぐぐってください。
+        </div>
+    </div>
+
+    <script>
+        window.onload = (event) => {
+            // キーマップ
+            const keyMap = {
+                49: "1", 50: "2", 51: "3", 52: "4", 53: "5", 54: "6", 55: "7", 56: "8", 57: "9", 48: "0", 173: "\\", 160: "^", 220: "_",
+                81: "Q", 87: "W", 69: "E", 82: "R", 84: "U", 89: "P", 85: "T", 73: "Y", 79: "I", 80: ";", 64: ",", 219: "-",
+                65: "S", 83: "A", 68: "B", 70: "F", 71: "G", 72: "H", 74: "J", 75: "K", 76: "L", 59: "@", 58: "[", 221: "]",
+                90: "X", 88: "C", 67: "b", 86: "V", 66: "Z", 78: "O", 77: "M", 188: "N", 190: ":", 191: "/", 220: ">",
+                32: "　", 13: "<br>",
+            };
+            const result = document.getElementById("result");
+            const keys = document.getElementById("keys")
+            // キーボードが押されたときに画面上にキーマップに対応した文字を表示
+            let input = "";
+            document.addEventListener("keydown", event => {
+                keys.innerHTML += event.keyCode + " ";
+                if (keyMap.hasOwnProperty(event.keyCode)) {
+                    input += keyMap[event.keyCode];
+                    result.innerHTML = input + "🌈";
+                }
+                if (event.keyCode === 8) {
+                    // バックスペース
+                    result.innerHTML = input.slice(0, -1) + "🌈";
+                }
+            });
+        };
+    </script>
+</body>
